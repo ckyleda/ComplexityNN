@@ -1,5 +1,7 @@
 # DNN For Complexity Estimation of Scene Images
 
+![complexity_arch2](https://github.com/ckyleda/ComplexityNN/assets/3833991/faa80847-6403-4fb5-8f5b-bcdd415ca2a4)
+
 ## Setup
 
 1. Install Python 3 (3.8 recommended)
