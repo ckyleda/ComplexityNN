@@ -7,7 +7,7 @@
 3. Acquire the model weights and place them somewhere easily accessible (for example, `model/weights.pt`)
 4. Set up your testing data. This should be a directory which contains JPG or PNG images.
 
-The model weights are available at: https://github.com/ckyleda/ComplexityNN/releases/download/1.0.0/complexity_net.pt
+The model weights are available [here](https://github.com/ckyleda/ComplexityNN/releases/download/1.0.0/complexity_net.pt).
 
 ### Anaconda / Required Packages
 
