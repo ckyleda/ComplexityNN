@@ -42,9 +42,16 @@ def eval_directory(model_path, directory, output_path, batch_size=2):
     test_data = TestDataset(directory)
     test_dl = DataLoader(test_data, batch_size=batch_size)
 
+    found_hardware_device = "cuda:0" if torch.cuda.is_available() else "cpu"
+
+    print(f"Executing on: {found_hardware_device} (cuda = GPU, otherwise CPU)")
+    device = torch.device(found_hardware_device)
+
+    model = model.to(device)
     for idx, data in tqdm(enumerate(test_dl), total=len(test_dl)):
-        batch_images = data[0]
+        batch_images = data[0].to(device)
         filenames = data[1]
+
         predictions = model(batch_images)
 
         scores = predictions[1].cpu().detach().numpy().flatten()
