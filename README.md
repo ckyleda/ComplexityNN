@@ -67,7 +67,7 @@ it is only strictly necessary to tweak this to minimise IO overhead.
 If you found this code useful, please cite the paper:
 
 **Characterising and dissecting human perception of scene complexity** \
-Cameron Kyle-Davidson, Elizabeth Yue Zhou, Dirk B. Walther, Adrian G. Bors, Karla K. Evans \
+*Cameron Kyle-Davidson, Elizabeth Yue Zhou, Dirk B. Walther, Adrian G. Bors, Karla K. Evans* \
 Journal of Cognition \
 2023
 
