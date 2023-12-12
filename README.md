@@ -61,3 +61,26 @@ If it does not exist, it will be created.
 
 `--batch_size [integer]`: Set batch size (default 2). As the network is provided pre-trained,
 it is only strictly necessary to tweak this to minimise IO overhead.
+
+## Reference
+
+If you found this code useful, please cite the paper:
+
+**Characterising and dissecting human perception of scene complexity** \
+Cameron Kyle-Davidson, Elizabeth Yue Zhou, Dirk B. Walther, Adrian G. Bors, Karla K. Evans \
+Journal of Cognition \
+2023
+
+https://www.sciencedirect.com/science/article/pii/S0010027722003080
+
+```
+@article{kyle2023characterising,
+  title={Characterising and dissecting human perception of scene complexity},
+  author={Kyle-Davidson, Cameron and Zhou, Elizabeth Yue and Walther, Dirk B and Bors, Adrian G and Evans, Karla K},
+  journal={Cognition},
+  volume={231},
+  pages={105319},
+  year={2023},
+  publisher={Elsevier}
+}
+```
