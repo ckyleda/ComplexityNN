@@ -6,6 +6,13 @@ from ComplexityNet.resnet_feature_extractor import resnet152_fe
 
 class ComplexityNet(nn.Module):
     def __init__(self, use_backbone_weights=True):
+        """
+        Define the architecture for a neural network with two outputs,
+        one of which calculates overall complexity score, and one which generates a two-channel 2D complexity map
+        showing complex and simple image regions as a human might perceive them.
+
+        :param use_backbone_weights: Whether to use pre-existing resnet weights. Enable to use pre-trained resnet.
+        """
         super().__init__()
 
         self.resnet = resnet152_fe(pretrained=use_backbone_weights)
@@ -32,6 +39,12 @@ class ComplexityNet(nn.Module):
         self.map_conv_8 = nn.Conv2d(8, 3, (3, 3), padding=(1, 1))
 
     def score_path(self, batch):
+        """
+        Network path for handling complexity score prediction.
+
+        :param batch: Batch of images
+        :return: One-dimensional scores
+        """
         _, s56, s28, s14, s7 = self.resnet(batch)
         x = F.relu(self.conv_score_0(s7))
         x = F.relu(self.conv_score_1(x))
@@ -44,6 +57,12 @@ class ComplexityNet(nn.Module):
         return x
 
     def map_path(self, batch):
+        """
+        Network path for handling 2d complexity map prediction
+
+        :param batch: Batch of images
+        :return: Two-dimensional maps
+        """
         _, s56, s28, s14, s7 = self.resnet(batch)
         x = self.upsample2(s7)
         x = F.relu(self.map_conv_2048(x))
@@ -57,6 +76,12 @@ class ComplexityNet(nn.Module):
         return x
 
     def forward(self, batch):
+        """
+        Generate scores, maps from input images.
+
+        :param batch: Batch of images
+        :return: Predicted maps and scores.
+        """
         score_out = self.score_path(batch)
         map_out = self.map_path(batch)
         return map_out, score_out

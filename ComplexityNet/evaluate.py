@@ -11,6 +11,19 @@ from PIL import Image
 
 
 def eval_directory(model_path, directory, output_path, batch_size=2):
+    """
+    Run a complexity net model over a given directory.
+
+    :param model_path: Path to model weights
+    :param directory: Path to directory of PNG or JPG scene images
+    :param output_path:
+        A path to store output predictions and maps. Score predictions will be saved under predictions.csv.
+        Each input image will have a corresponding map with the same filename.
+        If the output directory does not exist, it will be created.
+        If it does exist, files within that directory may be overwritten.
+    :param batch_size: The maximum number of images to predict for at a given time.
+
+    """
     model = ComplexityNet()
     if not os.path.isfile(model_path):
         raise FileNotFoundError("Could not read model file. Does it exist?")
@@ -55,4 +68,5 @@ def eval_directory(model_path, directory, output_path, batch_size=2):
 
 
 if __name__ == "__main__":
+    # Example function call.
     eval_directory("../model/complexity_net.pt", "../samples", output_path='../output')

@@ -7,6 +7,14 @@ from torchvision.io import read_image
 
 class TestDataset(Dataset):
     def __init__(self, directory):
+        """
+        A simple torch dataset for handling testing data only.
+        Given a directory, allow for easy access to images contained within that directory.
+
+        Handles all required transforms for the scene images.
+
+        :param directory: The directory path.
+        """
         self.filenames = [(Path(directory).resolve() / fn) for fn in os.listdir(directory)]
 
     def __getitem__(self, item):
