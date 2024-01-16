@@ -116,3 +116,9 @@ https://www.sciencedirect.com/science/article/pii/S0010027722003080
   publisher={Elsevier}
 }
 ```
+
+## Disclaimer
+
+The material embodied in this software is provided to you "as-is" and without warranty of any kind, express, 
+implied or otherwise, including without limitation, any warranty of fitness for a particular purpose. This material may
+change at any time, without warning.
