@@ -21,6 +21,11 @@ This project depends upon core packages:
 - Pillow (PIL)
 - tqdm
 
+For computing complexity metrics, you will also require:
+
+- Opencv2
+- Scikit-image
+
 See requirements.txt for a full list and version information.
 
 ## Run
@@ -61,6 +66,33 @@ If it does not exist, it will be created.
 
 `--batch_size [integer]`: Set batch size (default 2). As the network is provided pre-trained,
 it is only strictly necessary to tweak this to minimise IO overhead.
+
+## Clutter & Symmetry Metrics
+
+This repository also includes tools for computing the clutter and symmetry scores given in the paper.
+To do this, run the following command (or see `example_metrics.sh`):
+
+`python3 metrics.py --processes 2 --directory samples/ --output output`
+
+This will generate a `metrics.csv` under the output directory containing clutter and symmetry scores for
+each image in the input directory. It's recommended to normalise these output values between 0 and 1.0.
+
+A configuration file is provided under the `ClutterSym` package, `configuration.json` that contains 
+parameters used for the Normalised Graph Cut and the Symmetry calculator. You may need to tweak these to
+best fit your data, if you are seeing obviously unexpected results.
+
+### Required flags for `metrics.py`
+
+`--directory [path/to/input/images]`: Path to directory for which you wish to predict complexity metrics.
+Must contain **only** .png or .jpg / .jpeg files. The input images must be square, RGB (three channels), and 8 bit.
+
+`--output [path/to/output/]`: Directory to place output CSV containing metric data.
+If it does not exist, it will be created.
+
+### Optional flags for `metrics.py`
+
+`--processes [integer, between 1 and n, default: 2]`: The number of processes to use. If running the script over a large
+amount of images, setting this number to (available cores - 1) will reduce runtime considerably.
 
 ## Reference
 

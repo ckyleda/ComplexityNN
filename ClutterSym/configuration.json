@@ -1,0 +1,10 @@
+{
+  "compactness": 30,
+  "n_segments": 400,
+  "large_window_size": 30,
+  "med_window_size": 20,
+  "small_window_size": 10,
+  "large_step_size": 15,
+  "med_step_size": 10,
+  "small_step_size": 5
+}
